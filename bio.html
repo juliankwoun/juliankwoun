@@ -15,32 +15,33 @@
       <li><a href="score.html">Score</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button id="lang-toggle" class="lang-btn">EN</button>
   </nav>
 
   <main class="page">
     <div class="inner">
       <p class="inner-eyebrow">About</p>
-      <h1 class="inner-title">안녕하세요,<br><em>저는 이름입니다</em></h1>
+      <h1 class="inner-title" data-i18n="bio-heading">안녕하세요,<br><em>저는 이름입니다</em></h1>
 
       <div class="section">
-        <p class="section-label">소개</p>
-        <p>
+        <p class="section-label" data-i18n="bio-intro-label">소개</p>
+        <p data-i18n="bio-intro-text">
           여기에 자기소개를 작성하세요. 어떤 음악을 하는지, 어디서 공부했는지,
           어떤 계기로 음악을 시작했는지 자유롭게 써주세요.
         </p>
       </div>
 
       <div class="section">
-        <p class="section-label">경력 / 학력</p>
-        <p>
+        <p class="section-label" data-i18n="bio-career-label">경력 / 학력</p>
+        <p data-i18n="bio-career-text">
           학교, 수상 경력, 공연 이력 등 중요한 이력을 여기에 적어주세요.
           여러 줄로 나눠도 좋습니다.
         </p>
       </div>
 
       <div class="section">
-        <p class="section-label">관심 분야</p>
-        <p>
+        <p class="section-label" data-i18n="bio-interest-label">관심 분야</p>
+        <p data-i18n="bio-interest-text">
           주로 작업하는 장르나 악기, 영향을 받은 작곡가나 아티스트에 대해 이야기해보세요.
         </p>
       </div>
@@ -49,5 +50,6 @@
 
   <footer>© 2025</footer>
 
+  <script src="lang.js"></script>
 </body>
 </html>

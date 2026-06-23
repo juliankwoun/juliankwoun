@@ -266,6 +266,25 @@ nav {
 
 .contact-list a:hover { color: var(--gray); }
 
+/* ── LANG TOGGLE ── */
+.lang-btn {
+  background: none;
+  border: 1px solid var(--light);
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  margin-left: 2rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.lang-btn:hover {
+  color: var(--black);
+  border-color: var(--black);
+}
+
 /* ── FOOTER ── */
 footer {
   text-align: center;

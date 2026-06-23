@@ -15,45 +15,47 @@
       <li><a href="score.html" class="active">Score</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button id="lang-toggle" class="lang-btn">EN</button>
   </nav>
 
   <main class="page">
     <div class="inner">
       <p class="inner-eyebrow">Works</p>
-      <h1 class="inner-title">악보 &<br><em>작품 목록</em></h1>
+      <h1 class="inner-title" data-i18n="score-heading">악보 &amp;<br><em>작품 목록</em></h1>
 
       <div class="score-grid">
 
         <div class="score-item">
           <p class="score-item-title">곡 제목 1</p>
-          <p class="score-item-meta">2024 · 피아노 솔로</p>
+          <p class="score-item-meta" data-i18n="score-meta-1">2024 · 피아노 솔로</p>
         </div>
 
         <div class="score-item">
           <p class="score-item-title">곡 제목 2</p>
-          <p class="score-item-meta">2024 · 현악 4중주</p>
+          <p class="score-item-meta" data-i18n="score-meta-2">2024 · 현악 4중주</p>
         </div>
 
         <div class="score-item">
           <p class="score-item-title">곡 제목 3</p>
-          <p class="score-item-meta">2023 · 성악 + 피아노</p>
+          <p class="score-item-meta" data-i18n="score-meta-3">2023 · 성악 + 피아노</p>
         </div>
 
         <div class="score-item">
           <p class="score-item-title">곡 제목 4</p>
-          <p class="score-item-meta">2023 · 플루트 솔로</p>
+          <p class="score-item-meta" data-i18n="score-meta-4">2023 · 플루트 솔로</p>
         </div>
 
       </div>
 
       <div class="section" style="margin-top: 3rem;">
-        <p class="section-label">안내</p>
-        <p>악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Contact</a>로 문의해주세요.</p>
+        <p class="section-label" data-i18n="score-note-label">안내</p>
+        <p data-i18n="score-note-text">악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Contact</a>로 문의해주세요.</p>
       </div>
     </div>
   </main>
 
   <footer>© 2025</footer>
 
+  <script src="lang.js"></script>
 </body>
 </html>
