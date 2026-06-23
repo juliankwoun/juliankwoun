@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>내 첫 사이트</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 첫 사이트</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p>GitHub Pages로 만든 사이트입니다.</p>
+ 
+  <nav>
+    <a href="index.html" class="nav-logo">이름</a>
+    <ul class="nav-links">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="score.html">Score</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+ 
+  <main class="page">
+    <section class="hero">
+      <p class="hero-eyebrow">Composer · Musician</p>
+      <h1 class="hero-title">음악으로<br><em>말하는 사람</em></h1>
+      <p class="hero-desc">
+        소리와 침묵 사이에서 작업합니다.<br>
+        아래에서 더 알아보세요.
+      </p>
+    </section>
+ 
+    <div class="cards">
+      <a href="bio.html" class="card">
+        <span class="card-label">01 — About</span>
+        <span class="card-title">Bio</span>
+        <p class="card-desc">저를 소개합니다. 음악을 시작하게 된 이야기와 지금까지의 여정.</p>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="score.html" class="card">
+        <span class="card-label">02 — Works</span>
+        <span class="card-title">Score</span>
+        <p class="card-desc">작곡한 곡들과 악보를 모아두었습니다.</p>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="contact.html" class="card">
+        <span class="card-label">03 — Connect</span>
+        <span class="card-title">Contact</span>
+        <p class="card-desc">협업 문의, 연주 의뢰 또는 그냥 인사도 환영합니다.</p>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </main>
+ 
+  <footer>© 2025</footer>
+ 
 </body>
 </html>
+ 
