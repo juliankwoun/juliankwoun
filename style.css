@@ -46,6 +46,8 @@ nav {
   display: flex;
   gap: 2.5rem;
   list-style: none;
+  align-self: stretch;
+  align-items: stretch;
 }
 
 .nav-links a {
@@ -265,6 +267,92 @@ nav {
 }
 
 .contact-list a:hover { color: var(--gray); }
+
+/* ── WORKS DROPDOWN ── */
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown > a::after {
+  content: ' ▾';
+  font-size: 0.6rem;
+  opacity: 0.5;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--white);
+  border: 1px solid var(--light);
+  border-top: none;
+  display: flex;
+  gap: 3rem;
+  padding: 1.8rem 2.2rem 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+  white-space: nowrap;
+  z-index: 99;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown-heading {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--light);
+}
+
+.dropdown-col {
+  min-width: 150px;
+}
+
+.dropdown-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col li {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col a {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  padding: 0.28rem 0;
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+
+.dropdown-col a:hover { color: var(--black); }
+
+.dropdown-sub {
+  font-size: 0.62rem;
+  color: var(--gray);
+  letter-spacing: 0.03em;
+  text-transform: none;
+  line-height: 1.3;
+  padding-bottom: 0.25rem;
+  opacity: 0.7;
+}
 
 /* ── LANG TOGGLE ── */
 .lang-btn {
