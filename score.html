@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Score — 내 첫 사이트</title>
+  <title>Works — Julian Kwoun</title>
   <link rel="stylesheet" href="style.css" />
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
@@ -19,19 +19,21 @@
           <div class="dropdown-col">
             <p class="dropdown-heading">Composition</p>
             <ul>
-              <li><a href="#">Orchestra</a></li>
-              <li><a href="#">Wind Ensemble</a></li>
+              <li><a href="score.html#orchestra">Orchestra</a></li>
+              <li><a href="score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="score.html#jazz-band">Jazz Band</a></li>
+              <li><a href="score.html#jazz-ensemble">Jazz Ensemble</a></li>
               <li>
-                <a href="#">Large Ensemble</a>
+                <a href="score.html#large-ensemble">Large Ensemble</a>
                 <span class="dropdown-sub">(9 ~ 20 performers)</span>
               </li>
               <li>
-                <a href="#">Small Ensemble</a>
+                <a href="score.html#small-ensemble">Small Ensemble</a>
                 <span class="dropdown-sub">(2 ~ 8 performers)</span>
               </li>
-              <li><a href="#">Electroacoustic</a></li>
-              <li><a href="#">Vocal Music</a></li>
-              <li><a href="#">Solo Instrument</a></li>
+              <li><a href="score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="score.html#vocal">Vocal Music</a></li>
+              <li><a href="score.html#solo">Solo Instrument</a></li>
             </ul>
           </div>
           <div class="dropdown-col">
@@ -61,38 +63,367 @@
   </nav>
 
   <main class="page">
-    <div class="inner">
+    <div class="inner works-inner">
       <p class="inner-eyebrow">Works</p>
-      <h1 class="inner-title" data-i18n="score-heading">악보 &amp;<br><em>작품 목록</em></h1>
+      <h1 class="inner-title">Composition<br><em>Catalogue</em></h1>
 
-      <div class="score-grid">
-
-        <div class="score-item">
-          <p class="score-item-title">곡 제목 1</p>
-          <p class="score-item-meta" data-i18n="score-meta-1">2024 · 피아노 솔로</p>
+      <!-- Orchestra -->
+      <section class="works-category" id="orchestra">
+        <h2 class="works-cat-title">Orchestra</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Three Postcards for Orchestra</span>
+            </div>
+            <span class="work-year">2020</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Four Episodes for Orchestra</span>
+            </div>
+            <span class="work-year">2019</span>
+          </div>
         </div>
+      </section>
 
-        <div class="score-item">
-          <p class="score-item-title">곡 제목 2</p>
-          <p class="score-item-meta" data-i18n="score-meta-2">2024 · 현악 4중주</p>
+      <!-- Wind Ensemble -->
+      <section class="works-category" id="wind-ensemble">
+        <h2 class="works-cat-title">Wind Ensemble</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Soaring over Modern and Green</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Transfer Nostalgia</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Overture</span>
+            </div>
+            <span class="work-year">2018</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Amabile</span>
+            </div>
+            <span class="work-year">2015</span>
+          </div>
         </div>
+      </section>
 
-        <div class="score-item">
-          <p class="score-item-title">곡 제목 3</p>
-          <p class="score-item-meta" data-i18n="score-meta-3">2023 · 성악 + 피아노</p>
+      <!-- Jazz Band -->
+      <section class="works-category" id="jazz-band">
+        <h2 class="works-cat-title">Jazz Band</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">ROKAF Suite</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
         </div>
+      </section>
 
-        <div class="score-item">
-          <p class="score-item-title">곡 제목 4</p>
-          <p class="score-item-meta" data-i18n="score-meta-4">2023 · 플루트 솔로</p>
+      <!-- Jazz Ensemble -->
+      <section class="works-category" id="jazz-ensemble">
+        <h2 class="works-cat-title">Jazz Ensemble</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Julia's Dance</span>
+              <span class="work-instr">for Jazz Trio</span>
+            </div>
+            <span class="work-year">2020</span>
+          </div>
         </div>
+      </section>
 
-      </div>
+      <!-- Large Ensemble -->
+      <section class="works-category" id="large-ensemble">
+        <h2 class="works-cat-title">Large Ensemble</h2>
+        <p class="works-cat-sub">9 ~ 20 performers</p>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Doodlian Bundle 2</span>
+              <span class="work-instr">for Percussion Ensemble &amp; Electric Keyboard</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">The Dangerous Migration</span>
+              <span class="work-instr">for Chamber Ensemble</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Stella's Moving Teapot</span>
+              <span class="work-instr">for Sinfonietta</span>
+            </div>
+            <span class="work-year">2017</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">No Questions</span>
+              <span class="work-instr">for Sinfonietta</span>
+            </div>
+            <span class="work-year">2016</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Fanfare</span>
+              <span class="work-instr">for Brass Ensemble &amp; Percussion</span>
+            </div>
+            <span class="work-year">2014</span>
+          </div>
+        </div>
+      </section>
 
-      <div class="section" style="margin-top: 3rem;">
-        <p class="section-label" data-i18n="score-note-label">안내</p>
-        <p data-i18n="score-note-text">악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Contact</a>로 문의해주세요.</p>
-      </div>
+      <!-- Small Ensemble -->
+      <section class="works-category" id="small-ensemble">
+        <h2 class="works-cat-title">Small Ensemble</h2>
+        <p class="works-cat-sub">2 ~ 8 performers</p>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">To reach the sky, Hymns for a certain flight.</span>
+              <span class="work-instr">for String Sextet</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Song and Dance</span>
+              <span class="work-instr">for Flute, Clarinet, Violin, Cello, and Piano</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Suite in the Old Style</span>
+              <span class="work-instr">for Violin and Cello</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Trio for Clarinet, Viola, and Piano</span>
+            </div>
+            <span class="work-year">2020</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Julia's Dance</span>
+              <span class="work-instr">for Piano &amp; Contrabass</span>
+            </div>
+            <span class="work-year">2020</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Three Memories from Lahemaa</span>
+              <span class="work-instr">for String "Cello" Quintet</span>
+            </div>
+            <span class="work-year">2019</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Doodlian Bundle</span>
+              <span class="work-instr">for Percussion Ensemble &amp; Piano 4 hands</span>
+            </div>
+            <span class="work-year">2019</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">That Dim Aurora over the Seaside</span>
+              <span class="work-instr">for Clarinet, Bassoon, and Piano Quintet</span>
+            </div>
+            <span class="work-year">2018</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Lament for Arirang</span>
+              <span class="work-instr">for Piano Quintet</span>
+            </div>
+            <span class="work-year">2017</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Scenes Around the Trakai Castle</span>
+              <span class="work-instr">for Clarinet, Viola, and Piano</span>
+            </div>
+            <span class="work-year">2017</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Bossa Nova 2</span>
+              <span class="work-instr">for String Quartet &amp; optional Percussion</span>
+            </div>
+            <span class="work-year">2017</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Arirang and Fugue</span>
+              <span class="work-instr">for Wind Quintet</span>
+            </div>
+            <span class="work-year">2016</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Rondo</span>
+              <span class="work-instr">for Flute &amp; String Trio</span>
+            </div>
+            <span class="work-year">2015</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Duet Waltz</span>
+              <span class="work-instr">for Cornet &amp; Marimba</span>
+            </div>
+            <span class="work-year">2014</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Christmas Eve</span>
+              <span class="work-instr">for French Horn &amp; Piano</span>
+            </div>
+            <span class="work-year">2014</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Bossa Nova</span>
+              <span class="work-instr">for String Quartet &amp; optional Percussion</span>
+            </div>
+            <span class="work-year">2013</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Present</span>
+              <span class="work-instr">for 3 Trombones (2 Tenors &amp; Bass)</span>
+            </div>
+            <span class="work-year">2013</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Coffee Fantasy</span>
+              <span class="work-instr">for Clarinet &amp; Piano</span>
+            </div>
+            <span class="work-year">2012</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vocal -->
+      <section class="works-category" id="vocal">
+        <h2 class="works-cat-title">Vocal Music</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">하늘을 위한 4개의 가곡 "Four Songs for the Sky"</span>
+              <span class="work-instr">for Voice and Piano</span>
+            </div>
+            <span class="work-year">2021</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">산유화 "Flowers on the Mountains"</span>
+              <span class="work-instr">for Soprano and Piano</span>
+            </div>
+            <span class="work-year">2014</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">강물 "River Water"</span>
+              <span class="work-instr">for Mezzo-Soprano and Piano</span>
+            </div>
+            <span class="work-year">2012</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solo Instrument -->
+      <section class="works-category" id="solo">
+        <h2 class="works-cat-title">Solo Instrument</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Two Short Piano Pieces</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Variations on "Doraji Taryeong"</span>
+              <span class="work-instr">for Solo Piano</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Constraints Exercise 1</span>
+              <span class="work-instr">for Solo Piano</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">아리랑 회상 "Arirang Remembrance"</span>
+              <span class="work-instr">for Solo Cello</span>
+            </div>
+            <span class="work-year">2015</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Desperate Moments</span>
+              <span class="work-instr">for Solo Piano</span>
+            </div>
+            <span class="work-year">2015</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Peach Lover</span>
+              <span class="work-instr">for Solo Tuba</span>
+            </div>
+            <span class="work-year">2015</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Kinderszenen Variations</span>
+              <span class="work-instr">for Solo Piano</span>
+            </div>
+            <span class="work-year">2013</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Electroacoustic -->
+      <section class="works-category" id="electroacoustic">
+        <h2 class="works-cat-title">Electroacoustic</h2>
+        <div class="works-list">
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">A Delayed Ride Back Home</span>
+              <span class="work-instr">for Solo Piano &amp; Live Electronics</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+          <div class="work-item">
+            <div class="work-main">
+              <span class="work-title">Duet for Rainstick &amp; Piano</span>
+              <span class="work-instr">Fixed Media</span>
+            </div>
+            <span class="work-year">2018</span>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 

@@ -421,6 +421,66 @@ footer {
   border-top: 1px solid var(--light);
 }
 
+/* ── WORKS CATALOGUE ── */
+.works-inner { max-width: 900px; }
+
+.works-category {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.works-cat-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--light);
+  margin-bottom: 0.3rem;
+}
+
+.works-cat-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.8rem;
+}
+
+.work-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--light);
+}
+
+.work-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.work-title {
+  font-size: 0.9rem;
+  color: var(--black);
+  letter-spacing: 0.01em;
+}
+
+.work-instr {
+  font-size: 0.74rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.work-year {
+  font-size: 0.74rem;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
 /* ── PHOTO CREDIT ── */
 .photo-credit {
   font-size: 0.6rem;
