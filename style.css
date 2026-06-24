@@ -374,7 +374,15 @@ nav {
   opacity: 0.7;
 }
 
-/* ── LANG TOGGLE ── */
+/* ── NAV ACTIONS ── */
+.nav-actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.theme-btn,
 .lang-btn {
   background: none;
   border: 1px solid var(--light);
@@ -382,12 +390,14 @@ nav {
   font-family: 'Inter', sans-serif;
   font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.15em;
-  padding: 0.35rem 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.65rem;
   cursor: pointer;
-  margin-left: 2rem;
   transition: color 0.2s, border-color 0.2s;
+  line-height: 1;
 }
+
+.theme-btn:hover,
 .lang-btn:hover {
   color: var(--black);
   border-color: var(--black);
@@ -395,12 +405,69 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.72rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 2.5rem 2rem;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
-  color: var(--light);
+  color: var(--gray);
+  border-top: 1px solid var(--light);
 }
+
+/* ── PHOTO CREDIT ── */
+.photo-credit {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  text-align: right;
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+/* ── BIO INTRO ── */
+.bio-intro {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.bio-intro-text { flex: 1; }
+
+.bio-intro-text p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #444;
+}
+
+.bio-intro-photo {
+  flex-shrink: 0;
+  width: 240px;
+}
+
+.bio-intro-photo img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] {
+  --black: #ECEAE5;
+  --white: #131313;
+  --gray:  #888888;
+  --light: #2A2A2A;
+}
+
+[data-theme="dark"] .card:hover { background: #1C1C1C; }
+[data-theme="dark"] .section p,
+[data-theme="dark"] .bio-intro-text p { color: #AAAAAA; }
+[data-theme="dark"] .hero-photo img,
+[data-theme="dark"] .bio-intro-photo img { filter: brightness(0.85); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
@@ -408,6 +475,9 @@ footer {
   .hero { flex-direction: column; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
   .hero-photo { width: 100%; }
   .hero-photo img { height: 300px; }
+  .bio-intro { flex-direction: column; gap: 2rem; }
+  .bio-intro-photo { width: 100%; }
+  .bio-intro-photo img { height: 260px; }
   .cards { grid-template-columns: 1fr; }
   .inner { padding: 3rem 1.5rem 4rem; }
   .score-grid { grid-template-columns: 1fr; }

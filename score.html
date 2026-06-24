@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Score — 내 첫 사이트</title>
   <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">이름</a>
+    <a href="index.html" class="nav-logo">Home</a>
     <ul class="nav-links">
       <li><a href="bio.html">Bio</a></li>
       <li class="nav-dropdown">
@@ -53,7 +54,10 @@
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button id="lang-toggle" class="lang-btn">EN</button>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
   </nav>
 
   <main class="page">
@@ -92,7 +96,10 @@
     </div>
   </main>
 
-  <footer>© 2025</footer>
+  <footer>
+    <p>© 2025 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Kwoun</p>
+  </footer>
 
   <script src="lang.js"></script>
 </body>

@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bio — 내 첫 사이트</title>
   <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">이름</a>
+    <a href="index.html" class="nav-logo">Home</a>
     <ul class="nav-links">
       <li><a href="bio.html" class="active">Bio</a></li>
       <li class="nav-dropdown">
@@ -53,7 +54,10 @@
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button id="lang-toggle" class="lang-btn">EN</button>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
   </nav>
 
   <main class="page">
@@ -61,24 +65,29 @@
       <p class="inner-eyebrow">Biography</p>
       <h1 class="inner-title">Julian Hae Yoon<br><em>Kwoun</em></h1>
 
-      <div class="section">
-        <p>
-          Julian Hae Yoon Kwoun (b. 1996) is a composer, arranger, transcriber, pianist, and
-          conductor whose work spans across multiple genres; including classical, jazz, popular,
-          folk, electroacoustic, instrumental and vocal. His most advanced skillsets lay on
-          arrangements and orchestration, keeping a keen eye on the importance of "arranging
-          FOR the players themselves." As a composer, the environmental surroundings and
-          happenings are what inspires him the most within his works. As a Korean-American,
-          Korean folk music and jazz are used extensibly for his compositions. Having been
-          collaborating with various ensembles as a freelance composer and arranger, this has
-          allowed him to conduct his own works and help expand the repertories of the ensembles
-          individually unique to them. An avid enthusiast for handwritten scores, Julian greatly
-          enjoys the process of transcribing scores for the sake of instrumentalists alike. Having
-          tried various instruments throughout his youth and career, (Violin, Piano, Clarinet,
-          Trumpet, Drums &amp; Percussion) his most preferred is piano and electric keyboard, having
-          served briefly as the main keyboardist during his mandatory service at the Republic of
-          Korea Air Force Band.
-        </p>
+      <div class="bio-intro">
+        <div class="bio-intro-text">
+          <p>
+            Julian Hae Yoon Kwoun (b. 1996) is a composer, arranger, transcriber, pianist, and
+            conductor whose work spans across multiple genres; including classical, jazz, popular,
+            folk, electroacoustic, instrumental and vocal. His most advanced skillsets lay on
+            arrangements and orchestration, keeping a keen eye on the importance of "arranging
+            FOR the players themselves." As a composer, the environmental surroundings and
+            happenings are what inspires him the most within his works. As a Korean-American,
+            Korean folk music and jazz are used extensibly for his compositions. Having been
+            collaborating with various ensembles as a freelance composer and arranger, this has
+            allowed him to conduct his own works and help expand the repertories of the ensembles
+            individually unique to them. An avid enthusiast for handwritten scores, Julian greatly
+            enjoys the process of transcribing scores for the sake of instrumentalists alike. Having
+            tried various instruments throughout his youth and career, (Violin, Piano, Clarinet,
+            Trumpet, Drums &amp; Percussion) his most preferred is piano and electric keyboard, having
+            served briefly as the main keyboardist during his mandatory service at the Republic of
+            Korea Air Force Band.
+          </p>
+        </div>
+        <div class="bio-intro-photo">
+          <img src="Pictures/Julian Kwoun Artistic Photo.jpg" alt="Julian Kwoun" />
+        </div>
       </div>
 
       <div class="section">
@@ -124,7 +133,10 @@
     </div>
   </main>
 
-  <footer>© 2025</footer>
+  <footer>
+    <p>© 2025 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Kwoun</p>
+  </footer>
 
   <script src="lang.js"></script>
 </body>
