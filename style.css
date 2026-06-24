@@ -434,25 +434,42 @@ footer {
   margin-bottom: 3rem;
 }
 
-.bio-intro-text { flex: 1; }
-
-.bio-intro-text p {
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: #444;
-}
-
-.bio-intro-photo {
+.bio-intro-left {
   flex-shrink: 0;
-  width: 240px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .bio-intro-photo img {
   width: 100%;
-  height: 340px;
+  height: 360px;
   object-fit: cover;
   object-position: top;
   display: block;
+}
+
+.bio-intro-edu .section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.8rem;
+}
+
+.bio-intro-edu p:last-child {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.bio-intro-right { flex: 1; }
+
+.bio-intro-right p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #444;
 }
 
 /* ── DARK MODE ── */
@@ -465,7 +482,8 @@ footer {
 
 [data-theme="dark"] .card:hover { background: #1C1C1C; }
 [data-theme="dark"] .section p,
-[data-theme="dark"] .bio-intro-text p { color: #AAAAAA; }
+[data-theme="dark"] .bio-intro-right p,
+[data-theme="dark"] .bio-intro-edu p:last-child { color: #AAAAAA; }
 [data-theme="dark"] .hero-photo img,
 [data-theme="dark"] .bio-intro-photo img { filter: brightness(0.85); }
 
@@ -476,7 +494,7 @@ footer {
   .hero-photo { width: 100%; }
   .hero-photo img { height: 300px; }
   .bio-intro { flex-direction: column; gap: 2rem; }
-  .bio-intro-photo { width: 100%; }
+  .bio-intro-left { width: 100%; }
   .bio-intro-photo img { height: 260px; }
   .cards { grid-template-columns: 1fr; }
   .inner { padding: 3rem 1.5rem 4rem; }
