@@ -24,7 +24,7 @@ const T = {
 
     'contact-heading':        '연락<br><em>언제든지 환영합니다</em>',
     'contact-location-label': '위치',
-    'contact-location':       '서울, 대한민국',
+    'contact-location':       '대한민국',
   },
   en: {
     'hero-title':      'Speaking<br><em>through music</em>',
@@ -51,7 +51,7 @@ const T = {
 
     'contact-heading':        'Get in Touch —<br><em>always welcome</em>',
     'contact-location-label': 'Location',
-    'contact-location':       'Seoul, South Korea',
+    'contact-location':       'South Korea',
   }
 };
 
