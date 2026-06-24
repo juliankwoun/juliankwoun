@@ -50,6 +50,11 @@ nav {
   align-items: stretch;
 }
 
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links a {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
