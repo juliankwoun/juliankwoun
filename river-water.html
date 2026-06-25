@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>강물 River Water — Julian Kwoun</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Home</a>
+    <ul class="nav-links">
+      <li><a href="bio.html">Bio</a></li>
+      <li class="nav-dropdown">
+        <a href="score.html" class="active">Works</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-col">
+            <p class="dropdown-heading">Composition</p>
+            <ul>
+              <li><a href="score.html#orchestra">Orchestra</a></li>
+              <li><a href="score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="score.html#jazz-band">Jazz Band</a></li>
+              <li><a href="score.html#jazz-ensemble">Jazz Ensemble</a></li>
+              <li>
+                <a href="score.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="score.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="score.html#vocal">Vocal Music</a></li>
+              <li><a href="score.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <p class="dropdown-heading">Arrangement</p>
+            <ul>
+              <li><a href="#">Orchestra</a></li>
+              <li><a href="#">Wind Ensemble</a></li>
+              <li>
+                <a href="#">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="#">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="#">Solo Instrument</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="piece-page">
+
+      <div class="piece-score" id="pdf-container">
+        <div id="pdf-pages"></div>
+        <p class="pdf-loading" id="pdf-loading">Loading score…</p>
+      </div>
+
+      <div class="piece-info">
+        <p class="piece-back"><a href="score.html#vocal">← Works</a></p>
+
+        <div class="piece-header">
+          <h1 class="piece-title">강물 "River Water" <span class="piece-year">(2012)</span></h1>
+          <p class="piece-instr">For Mezzo-Soprano and Piano</p>
+          <p class="piece-composer">Composer — Julian Kwoun</p>
+        </div>
+
+        <div class="piece-desc">
+          <p>설명</p>
+        </div>
+
+        <div class="piece-video">
+          <iframe
+            src="https://www.youtube.com/embed/OwcGTcCKnzg"
+            title="강물 River Water — Julian Kwoun"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="piece-purchase">
+          <button class="purchase-btn">Purchase / 구매</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Hae In Kwoun</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="lang.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    (async function () {
+      const url = 'Scores/Composition/Vocal/02%20%EA%B0%95%EB%AC%BC%20River%20Water.pdf';
+      const container = document.getElementById('pdf-pages');
+      const loading   = document.getElementById('pdf-loading');
+
+      try {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        loading.style.display = 'none';
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page     = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 1.8 });
+
+          const canvas   = document.createElement('canvas');
+          canvas.width   = viewport.width;
+          canvas.height  = viewport.height;
+          canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
+
+          canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+          container.appendChild(canvas);
+          await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+        }
+      } catch (err) {
+        loading.textContent = 'Score unavailable.';
+        console.error(err);
+      }
+    })();
+  </script>
+</body>
+</html>
