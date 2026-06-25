@@ -445,10 +445,32 @@ footer {
   top: 0;
   z-index: 5;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 0.4rem;
   padding: 0.35rem 0.5rem;
   background: #f4f3f0;
 }
+
+.zoom-controls {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.zoom-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--gray);
+  transition: color 0.2s, border-color 0.2s;
+}
+.zoom-btn:hover { color: var(--black); border-color: var(--black); }
 
 .fullscreen-btn {
   background: transparent;
@@ -472,6 +494,10 @@ footer {
 #pdf-container:fullscreen .pdf-controls,
 #pdf-container:-webkit-full-screen .pdf-controls {
   background: #f4f3f0;
+}
+#pdf-container:fullscreen .zoom-controls,
+#pdf-container:-webkit-full-screen .zoom-controls {
+  display: flex;
 }
 
 .pdf-loading {

@@ -67,6 +67,10 @@
 
       <div class="piece-score" id="pdf-container">
         <div class="pdf-controls">
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-out">&#x2212;</button>
+            <button class="zoom-btn" id="zoom-in">+</button>
+          </div>
           <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
         </div>
         <div id="pdf-pages"></div>
@@ -114,30 +118,32 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+    let pdfDoc = null;
+    let currentScale = 1.8;
+
+    async function renderPages(scale) {
+      const container = document.getElementById('pdf-pages');
+      container.innerHTML = '';
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page     = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale });
+        const canvas   = document.createElement('canvas');
+        canvas.width   = viewport.width;
+        canvas.height  = viewport.height;
+        canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        container.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      }
+    }
+
     (async function () {
       const url = '../../Scores/Composition/Small%20Ensemble%20(2~8%20performers)/01%20Coffee%20Fantasy.pdf';
-      const container = document.getElementById('pdf-pages');
-      const loading  = document.getElementById('pdf-loading');
-
+      const loading   = document.getElementById('pdf-loading');
       try {
-        const pdf = await pdfjsLib.getDocument(url).promise;
+        pdfDoc = await pdfjsLib.getDocument(url).promise;
         loading.style.display = 'none';
-
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page     = await pdf.getPage(i);
-          const viewport = page.getViewport({ scale: 1.8 });
-
-          const canvas   = document.createElement('canvas');
-          canvas.width   = viewport.width;
-          canvas.height  = viewport.height;
-          canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
-
-          /* disable right-click save on each page */
-          canvas.addEventListener('contextmenu', e => e.preventDefault());
-
-          container.appendChild(canvas);
-          await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-        }
+        await renderPages(currentScale);
       } catch (err) {
         loading.textContent = 'Score unavailable.';
         console.error(err);
@@ -155,6 +161,14 @@
     });
     document.addEventListener("fullscreenchange", () => {
       fsBtn.textContent = document.fullscreenElement ? "Exit" : "Fullscreen";
+    });
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      currentScale = Math.min(currentScale + 0.3, 4.0);
+      if (pdfDoc) renderPages(currentScale);
+    });
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      currentScale = Math.max(currentScale - 0.3, 0.6);
+      if (pdfDoc) renderPages(currentScale);
     });
   </script>
 </body>
