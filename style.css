@@ -440,6 +440,40 @@ footer {
   background: #f4f3f0;
 }
 
+.pdf-controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.35rem 0.5rem;
+  background: #f4f3f0;
+}
+
+.fullscreen-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 0.25rem 0.65rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  transition: color 0.2s, border-color 0.2s;
+}
+.fullscreen-btn:hover { color: var(--black); border-color: var(--black); }
+
+#pdf-container:fullscreen,
+#pdf-container:-webkit-full-screen {
+  overflow-y: auto;
+  background: #f4f3f0;
+}
+#pdf-container:fullscreen .pdf-controls,
+#pdf-container:-webkit-full-screen .pdf-controls {
+  background: #f4f3f0;
+}
+
 .pdf-loading {
   font-size: 0.75rem;
   color: var(--gray);

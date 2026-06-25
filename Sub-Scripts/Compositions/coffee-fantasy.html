@@ -66,6 +66,9 @@
     <div class="piece-page">
 
       <div class="piece-score" id="pdf-container">
+        <div class="pdf-controls">
+          <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
+        </div>
         <div id="pdf-pages"></div>
         <p class="pdf-loading" id="pdf-loading">Loading score…</p>
       </div>
@@ -93,7 +96,7 @@
         </div>
 
         <div class="piece-purchase">
-          <button class="purchase-btn">Purchase / 구매</button>
+          <button class="purchase-btn">Request Score &amp; Parts (pdf)</button>
         </div>
       </div>
 
@@ -140,6 +143,19 @@
         console.error(err);
       }
     })();
+
+    const fsBtn = document.getElementById("fullscreen-btn");
+    const fsContainer = document.getElementById("pdf-container");
+    fsBtn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        fsContainer.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+    document.addEventListener("fullscreenchange", () => {
+      fsBtn.textContent = document.fullscreenElement ? "Exit" : "Fullscreen";
+    });
   </script>
 </body>
 </html>
