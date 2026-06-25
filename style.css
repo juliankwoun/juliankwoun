@@ -488,7 +488,7 @@ footer {
 
 #pdf-container:fullscreen,
 #pdf-container:-webkit-full-screen {
-  overflow-y: auto;
+  overflow: auto;
   background: #f4f3f0;
 }
 #pdf-container:fullscreen .pdf-controls,

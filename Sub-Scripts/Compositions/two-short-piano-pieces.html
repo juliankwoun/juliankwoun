@@ -118,14 +118,20 @@
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
     let pdfDoc = null;
-    let currentScale = 1.8;
+    let zoomLevel = 1.0;
 
-    async function renderPages(scale) {
+    function applyZoom() {
+      document.querySelectorAll('#pdf-pages canvas').forEach(c => {
+        c.style.width = (zoomLevel * 100) + '%';
+      });
+    }
+
+    async function renderPages() {
       const container = document.getElementById('pdf-pages');
       container.innerHTML = '';
       for (let i = 1; i <= pdfDoc.numPages; i++) {
         const page     = await pdfDoc.getPage(i);
-        const viewport = page.getViewport({ scale });
+        const viewport = page.getViewport({ scale: 1.8 });
         const canvas   = document.createElement('canvas');
         canvas.width   = viewport.width;
         canvas.height  = viewport.height;
@@ -142,7 +148,7 @@
       try {
         pdfDoc = await pdfjsLib.getDocument(url).promise;
         loading.style.display = 'none';
-        await renderPages(currentScale);
+        await renderPages();
       } catch (err) {
         loading.textContent = 'Score unavailable.';
         console.error(err);
@@ -159,15 +165,16 @@
       }
     });
     document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) { zoomLevel = 1.0; applyZoom(); }
       fsBtn.textContent = document.fullscreenElement ? "Exit" : "Fullscreen";
     });
     document.getElementById('zoom-in').addEventListener('click', () => {
-      currentScale = Math.min(currentScale + 0.3, 4.0);
-      if (pdfDoc) renderPages(currentScale);
+      zoomLevel = Math.min(zoomLevel + 0.2, 3.0);
+      applyZoom();
     });
     document.getElementById('zoom-out').addEventListener('click', () => {
-      currentScale = Math.max(currentScale - 0.3, 0.6);
-      if (pdfDoc) renderPages(currentScale);
+      zoomLevel = Math.max(zoomLevel - 0.2, 0.4);
+      applyZoom();
     });
   </script>
 </body>
