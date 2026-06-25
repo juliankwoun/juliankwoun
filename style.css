@@ -435,13 +435,17 @@ footer {
   height: calc(100vh - 11rem);
   position: sticky;
   top: 5.5rem;
+  overflow-y: auto;
+  border: 1px solid var(--light);
+  background: #f4f3f0;
 }
 
-.piece-score iframe {
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--light);
-  display: block;
+.pdf-loading {
+  font-size: 0.75rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 4rem 0;
 }
 
 .piece-info {
@@ -504,6 +508,28 @@ footer {
   display: block;
 }
 
+.piece-purchase {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--light);
+}
+
+.purchase-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.purchase-btn:hover { opacity: 0.75; }
+
 .work-link {
   text-decoration: none;
   color: inherit;
@@ -514,7 +540,19 @@ footer {
 
 @media (max-width: 900px) {
   .piece-page { flex-direction: column; padding: 2rem 1.5rem 3rem; }
-  .piece-score { flex: none; height: 75vw; min-height: 320px; position: static; }
+  .piece-score { flex: none; height: 70vw; min-height: 320px; position: static; overflow-y: auto; }
+}
+
+@media print {
+  .piece-score { display: none !important; }
+  .piece-info { display: none !important; }
+  body::after {
+    content: 'Printing is not permitted.';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5rem;
+  }
 }
 
 /* ── WORKS CATALOGUE ── */

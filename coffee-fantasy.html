@@ -65,11 +65,9 @@
   <main class="page">
     <div class="piece-page">
 
-      <div class="piece-score">
-        <iframe
-          src="Scores/Composition/Small%20Ensemble%20(2~8%20performers)/01%20Coffee%20Fantasy.pdf"
-          title="Coffee Fantasy Score">
-        </iframe>
+      <div class="piece-score" id="pdf-container">
+        <div id="pdf-pages"></div>
+        <p class="pdf-loading" id="pdf-loading">Loading score…</p>
       </div>
 
       <div class="piece-info">
@@ -93,6 +91,10 @@
             allowfullscreen>
           </iframe>
         </div>
+
+        <div class="piece-purchase">
+          <button class="purchase-btn">Purchase / 구매</button>
+        </div>
       </div>
 
     </div>
@@ -103,6 +105,41 @@
     <p>Web Design — Randy Hae In Kwoun</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="lang.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    (async function () {
+      const url = 'Scores/Composition/Small%20Ensemble%20(2~8%20performers)/01%20Coffee%20Fantasy.pdf';
+      const container = document.getElementById('pdf-pages');
+      const loading  = document.getElementById('pdf-loading');
+
+      try {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        loading.style.display = 'none';
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page     = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 1.8 });
+
+          const canvas   = document.createElement('canvas');
+          canvas.width   = viewport.width;
+          canvas.height  = viewport.height;
+          canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
+
+          /* disable right-click save on each page */
+          canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+          container.appendChild(canvas);
+          await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+        }
+      } catch (err) {
+        loading.textContent = 'Score unavailable.';
+        console.error(err);
+      }
+    })();
+  </script>
 </body>
 </html>
