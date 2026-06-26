@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>내 첫 사이트</title>
+  <title>Works — Julian Kwoun</title>
   <link rel="stylesheet" href="style.css" />
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 <body>
- 
+
   <nav>
     <a href="index.html" class="nav-logo">Home</a>
     <ul class="nav-links">
       <li><a href="bio.html" data-i18n="nav-bio">Bio</a></li>
       <li class="nav-dropdown">
-        <a href="works.html" data-i18n="nav-works">Works</a>
+        <a href="works.html" class="active" data-i18n="nav-works">Works</a>
         <div class="dropdown-menu">
           <div class="dropdown-col">
             <p class="dropdown-heading">Composition</p>
@@ -61,45 +61,33 @@
       <button id="lang-toggle" class="lang-btn">EN</button>
     </div>
   </nav>
- 
+
   <main class="page">
-    <section class="hero">
-      <div class="hero-text">
-        <p class="hero-eyebrow">Composer/Arranger · Musician</p>
-        <h1 class="hero-title" data-i18n="hero-title">음악으로<br><em>말하는 사람</em></h1>
-        <p class="hero-desc" data-i18n="hero-desc">
-          소리와 침묵 사이에서 작업합니다.<br>
-          아래에서 더 알아보세요.
+    <div class="works-hub">
+
+      <a href="score.html" class="works-hub-card">
+        <p class="works-hub-eyebrow">Julian Kwoun</p>
+        <h2 class="works-hub-title">Composition</h2>
+        <p class="works-hub-desc">
+          Original works spanning orchestra, chamber ensemble,<br>
+          jazz, vocal, and solo repertoire.
         </p>
-      </div>
-      <div class="hero-photo">
-        <img src="Pictures/Julian Kwoun Main Picture.jpg" alt="Julian Hae Yoon Kwoun" />
-        <p class="photo-credit">Photo Credit — Yechong Jeon</p>
-      </div>
-    </section>
- 
-    <div class="cards">
-      <a href="bio.html" class="card">
-        <span class="card-label">01 — About</span>
-        <span class="card-title">Bio</span>
-        <p class="card-desc" data-i18n="card-01-desc">저를 소개합니다. 음악을 시작하게 된 이야기와 지금까지의 여정.</p>
-        <span class="card-arrow">→</span>
+        <p class="works-hub-arrow">View Catalogue →</p>
       </a>
-      <a href="score.html" class="card">
-        <span class="card-label">02 — Works</span>
-        <span class="card-title">Works</span>
-        <p class="card-desc" data-i18n="card-02-desc">작곡한 곡들과 악보를 모아두었습니다.</p>
-        <span class="card-arrow">→</span>
+
+      <a href="arrangement.html" class="works-hub-card">
+        <p class="works-hub-eyebrow">Julian Kwoun</p>
+        <h2 class="works-hub-title">Arrangement</h2>
+        <p class="works-hub-desc">
+          Transcriptions and arrangements for orchestra,<br>
+          wind ensemble, chamber groups, and more.
+        </p>
+        <p class="works-hub-arrow">View Catalogue →</p>
       </a>
-      <a href="contact.html" class="card">
-        <span class="card-label">03 — Connect</span>
-        <span class="card-title">Contact</span>
-        <p class="card-desc" data-i18n="card-03-desc">협업 문의, 연주 의뢰 또는 그냥 인사도 환영합니다.</p>
-        <span class="card-arrow">→</span>
-      </a>
+
     </div>
   </main>
- 
+
   <footer>
     <p>© 2026 Julian Hae Yoon Kwoun</p>
     <p>Web Design — Randy Hae In Kwoun</p>
@@ -108,4 +96,3 @@
   <script src="lang.js"></script>
 </body>
 </html>
- 

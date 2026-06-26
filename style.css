@@ -421,6 +421,64 @@ footer {
   border-top: 1px solid var(--light);
 }
 
+/* ── WORKS HUB ── */
+.works-hub {
+  display: flex;
+  min-height: calc(100vh - 5rem);
+}
+
+.works-hub-card {
+  flex: 1;
+  padding: 5rem 4rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--light);
+  transition: background 0.25s;
+}
+
+.works-hub-card:last-child { border-right: none; }
+.works-hub-card:hover { background: var(--light); }
+
+.works-hub-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+}
+
+.works-hub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+}
+
+.works-hub-desc {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.works-hub-arrow {
+  margin-top: 2.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+@media (max-width: 700px) {
+  .works-hub { flex-direction: column; min-height: auto; }
+  .works-hub-card { border-right: none; border-bottom: 1px solid var(--light); padding: 3rem 2rem; }
+  .works-hub-card:last-child { border-bottom: none; }
+}
+
 /* ── PIECE PAGE ── */
 .piece-page {
   display: flex;
