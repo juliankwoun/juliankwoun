@@ -73,8 +73,10 @@
           </div>
           <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
         </div>
-        <div id="pdf-pages"></div>
-        <p class="pdf-loading" id="pdf-loading">Loading score…</p>
+        <div class="pdf-scroll-area" id="pdf-scroll-area">
+          <div id="pdf-pages"></div>
+          <p class="pdf-loading" id="pdf-loading">Loading score…</p>
+        </div>
       </div>
 
       <div class="piece-info">
@@ -121,7 +123,7 @@
     let zoomLevel = 1.0;
 
     function applyZoom() {
-      const container = document.getElementById('pdf-container');
+      const container = document.getElementById('pdf-scroll-area');
       const pages = document.getElementById('pdf-pages');
       const containerWidth = container.clientWidth;
       const targetWidth = Math.round(containerWidth * zoomLevel);
@@ -191,7 +193,7 @@
       applyZoom();
     });
 
-    document.getElementById('pdf-container').addEventListener('wheel', (e) => {
+    document.getElementById('pdf-scroll-area').addEventListener('wheel', (e) => {
       if (e.ctrlKey) {
         e.preventDefault();
         zoomLevel = e.deltaY < 0

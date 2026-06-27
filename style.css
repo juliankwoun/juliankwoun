@@ -493,21 +493,27 @@ footer {
   height: calc(100vh - 11rem);
   position: sticky;
   top: 5.5rem;
-  overflow-y: auto;
+  overflow: hidden;
   border: 1px solid var(--light);
   background: #f4f3f0;
+  display: flex;
+  flex-direction: column;
 }
 
 .pdf-controls {
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 0.4rem;
   padding: 0.35rem 0.5rem;
   background: #f4f3f0;
+  z-index: 5;
+}
+
+.pdf-scroll-area {
+  flex: 1;
+  overflow: auto;
 }
 
 .zoom-controls {
@@ -546,8 +552,9 @@ footer {
 
 #pdf-container:fullscreen,
 #pdf-container:-webkit-full-screen {
-  overflow: auto;
   background: #f4f3f0;
+  display: flex;
+  flex-direction: column;
 }
 #pdf-container:fullscreen .pdf-controls,
 #pdf-container:-webkit-full-screen .pdf-controls {
