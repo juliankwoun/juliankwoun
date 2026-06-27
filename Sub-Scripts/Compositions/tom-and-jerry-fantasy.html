@@ -4,36 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tom and Jerry Fantasy — Julian Kwoun</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../style.css" />
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Home</a>
+    <a href="../../index.html" class="nav-logo">Home</a>
     <ul class="nav-links">
-      <li><a href="bio.html">Bio</a></li>
+      <li><a href="../../bio.html">Bio</a></li>
       <li class="nav-dropdown">
-        <a href="score.html" class="active">Works</a>
+        <a href="../../score.html" class="active">Works</a>
         <div class="dropdown-menu">
           <div class="dropdown-col">
             <p class="dropdown-heading">Composition</p>
             <ul>
-              <li><a href="score.html#orchestra">Orchestra</a></li>
-              <li><a href="score.html#wind-ensemble">Wind Ensemble</a></li>
-              <li><a href="score.html#jazz-band">Jazz Band</a></li>
-              <li><a href="score.html#jazz-ensemble">Jazz Ensemble</a></li>
+              <li><a href="../../score.html#orchestra">Orchestra</a></li>
+              <li><a href="../../score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="../../score.html#jazz-band">Jazz Band</a></li>
+              <li><a href="../../score.html#jazz-ensemble">Jazz Ensemble</a></li>
               <li>
-                <a href="score.html#large-ensemble">Large Ensemble</a>
+                <a href="../../score.html#large-ensemble">Large Ensemble</a>
                 <span class="dropdown-sub">(9 ~ 20 performers)</span>
               </li>
               <li>
-                <a href="score.html#small-ensemble">Small Ensemble</a>
+                <a href="../../score.html#small-ensemble">Small Ensemble</a>
                 <span class="dropdown-sub">(2 ~ 8 performers)</span>
               </li>
-              <li><a href="score.html#electroacoustic">Electroacoustic</a></li>
-              <li><a href="score.html#vocal">Vocal Music</a></li>
-              <li><a href="score.html#solo">Solo Instrument</a></li>
+              <li><a href="../../score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="../../score.html#vocal">Vocal Music</a></li>
+              <li><a href="../../score.html#solo">Solo Instrument</a></li>
             </ul>
           </div>
           <div class="dropdown-col">
@@ -54,7 +54,7 @@
           </div>
         </div>
       </li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
     </ul>
     <div class="nav-actions">
       <button id="theme-toggle" class="theme-btn">☾</button>
@@ -78,7 +78,7 @@
       </div>
 
       <div class="piece-info">
-        <p class="piece-back"><a href="score.html#orchestra">← Works</a></p>
+        <p class="piece-back"><a href="../../score.html#orchestra">← Works</a></p>
 
         <div class="piece-header">
           <h1 class="piece-title">Tom and Jerry Fantasy <span class="piece-year">(2026)</span></h1>
@@ -112,14 +112,15 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="lang.js"></script>
+  <script src="../../lang.js"></script>
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+    let pdfDoc = null;
     let zoomLevel = 1.0;
 
-    function updateZoom() {
+    function applyZoom() {
       const container = document.getElementById('pdf-container');
       const pages = document.getElementById('pdf-pages');
       const containerWidth = container.clientWidth;
@@ -129,17 +130,46 @@
         pages.style.marginLeft = '0';
         requestAnimationFrame(() => { container.scrollLeft = (targetWidth - containerWidth) / 2; });
       } else {
-        pages.style.marginLeft = 'auto';
+        pages.style.marginLeft = ((containerWidth - targetWidth) / 2) + 'px';
         container.scrollLeft = 0;
       }
     }
 
+    async function renderPages() {
+      const pages = document.getElementById('pdf-pages');
+      pages.innerHTML = '';
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page     = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: 1.8 });
+        const canvas   = document.createElement('canvas');
+        canvas.width   = viewport.width;
+        canvas.height  = viewport.height;
+        canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        pages.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      }
+    }
+
+    (async function () {
+      const url = '../../Scores/Composition/Orchestra/39%20Tom%20and%20Jerry%20Fantasy.pdf';
+      const loading = document.getElementById('pdf-loading');
+      try {
+        pdfDoc = await pdfjsLib.getDocument(url).promise;
+        loading.style.display = 'none';
+        await renderPages();
+      } catch (err) {
+        loading.textContent = 'Score unavailable.';
+        console.error(err);
+      }
+    })();
+
     const fsBtn = document.getElementById('fullscreen-btn');
-    const pdfContainer = document.getElementById('pdf-container');
+    const fsContainer = document.getElementById('pdf-container');
 
     fsBtn.addEventListener('click', () => {
       if (!document.fullscreenElement) {
-        pdfContainer.requestFullscreen();
+        fsContainer.requestFullscreen();
       } else {
         document.exitFullscreen();
       }
@@ -148,48 +178,32 @@
     document.addEventListener('fullscreenchange', () => {
       if (!document.fullscreenElement) {
         zoomLevel = 1.0;
-        updateZoom();
+        const pages = document.getElementById('pdf-pages');
+        pages.style.width = '';
+        pages.style.marginLeft = '';
       }
       fsBtn.textContent = document.fullscreenElement ? 'Exit' : 'Fullscreen';
     });
 
     document.getElementById('zoom-in').addEventListener('click', () => {
       zoomLevel = Math.min(zoomLevel + 0.2, 3.0);
-      updateZoom();
+      applyZoom();
     });
 
     document.getElementById('zoom-out').addEventListener('click', () => {
       zoomLevel = Math.max(zoomLevel - 0.2, 0.4);
-      updateZoom();
+      applyZoom();
     });
 
-    (async function () {
-      const url = 'Scores/Composition/Orchestra/39%20Tom%20and%20Jerry%20Fantasy.pdf';
-      const pages = document.getElementById('pdf-pages');
-      const loading = document.getElementById('pdf-loading');
-
-      try {
-        const pdf = await pdfjsLib.getDocument(url).promise;
-        loading.style.display = 'none';
-
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page     = await pdf.getPage(i);
-          const viewport = page.getViewport({ scale: 1.8 });
-
-          const canvas   = document.createElement('canvas');
-          canvas.width   = viewport.width;
-          canvas.height  = viewport.height;
-          canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
-          canvas.addEventListener('contextmenu', e => e.preventDefault());
-
-          pages.appendChild(canvas);
-          await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-        }
-      } catch (err) {
-        loading.textContent = 'Score unavailable.';
-        console.error(err);
+    document.getElementById('pdf-container').addEventListener('wheel', (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        zoomLevel = e.deltaY < 0
+          ? Math.min(zoomLevel + 0.1, 3.0)
+          : Math.max(zoomLevel - 0.1, 0.4);
+        applyZoom();
       }
-    })();
+    }, { passive: false });
   </script>
 </body>
 </html>
