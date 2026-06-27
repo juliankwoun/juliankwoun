@@ -66,6 +66,13 @@
     <div class="piece-page">
 
       <div class="piece-score" id="pdf-container">
+        <div class="pdf-controls">
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-out">&#x2212;</button>
+            <button class="zoom-btn" id="zoom-in">+</button>
+          </div>
+          <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
+        </div>
         <div id="pdf-pages"></div>
         <p class="pdf-loading" id="pdf-loading">Loading score…</p>
       </div>
@@ -110,10 +117,56 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+    let zoomLevel = 1.0;
+
+    function updateZoom() {
+      const container = document.getElementById('pdf-container');
+      const pages = document.getElementById('pdf-pages');
+      const containerWidth = container.clientWidth;
+      const targetWidth = Math.round(containerWidth * zoomLevel);
+      pages.style.width = targetWidth + 'px';
+      if (targetWidth > containerWidth) {
+        pages.style.marginLeft = '0';
+        requestAnimationFrame(() => { container.scrollLeft = (targetWidth - containerWidth) / 2; });
+      } else {
+        pages.style.marginLeft = 'auto';
+        container.scrollLeft = 0;
+      }
+    }
+
+    const fsBtn = document.getElementById('fullscreen-btn');
+    const pdfContainer = document.getElementById('pdf-container');
+
+    fsBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        pdfContainer.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        zoomLevel = 1.0;
+        updateZoom();
+      }
+      fsBtn.textContent = document.fullscreenElement ? 'Exit' : 'Fullscreen';
+    });
+
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      zoomLevel = Math.min(zoomLevel + 0.2, 3.0);
+      updateZoom();
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      zoomLevel = Math.max(zoomLevel - 0.2, 0.4);
+      updateZoom();
+    });
+
     (async function () {
       const url = 'Scores/Composition/Orchestra/39%20Tom%20and%20Jerry%20Fantasy.pdf';
-      const container = document.getElementById('pdf-pages');
-      const loading   = document.getElementById('pdf-loading');
+      const pages = document.getElementById('pdf-pages');
+      const loading = document.getElementById('pdf-loading');
 
       try {
         const pdf = await pdfjsLib.getDocument(url).promise;
@@ -127,10 +180,9 @@
           canvas.width   = viewport.width;
           canvas.height  = viewport.height;
           canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
-
           canvas.addEventListener('contextmenu', e => e.preventDefault());
 
-          container.appendChild(canvas);
+          pages.appendChild(canvas);
           await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
         }
       } catch (err) {
