@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moldau — Julian Kwoun</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+  <nav>
+    <a href="../../index.html" class="nav-logo">Home</a>
+    <ul class="nav-links">
+      <li><a href="../../bio.html" data-i18n="nav-bio">Bio</a></li>
+      <li class="nav-dropdown">
+        <a href="../../works.html" class="active" data-i18n="nav-works">Works</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-col">
+            <a class="dropdown-heading" href="../../score.html">Composition</a>
+            <ul>
+              <li><a href="../../score.html#orchestra">Orchestra</a></li>
+              <li><a href="../../score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="../../score.html#jazz-band">Jazz Band</a></li>
+              <li><a href="../../score.html#jazz-ensemble">Jazz Ensemble</a></li>
+              <li>
+                <a href="../../score.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="../../score.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="../../score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="../../score.html#vocal">Vocal Music</a></li>
+              <li><a href="../../score.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <a class="dropdown-heading" href="../../arrangement.html">Arrangement</a>
+            <ul>
+              <li><a href="../../arrangement.html#orchestra">Orchestra</a></li>
+              <li><a href="../../arrangement.html#wind-ensemble">Wind Ensemble</a></li>
+              <li>
+                <a href="../../arrangement.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="../../arrangement.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="../../arrangement.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="../../request.html" data-i18n="nav-request">Request</a></li>
+      <li><a href="../../contact.html" data-i18n="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="piece-page">
+
+      <div class="piece-score" id="pdf-container">
+        <div class="pdf-controls">
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-out">&#x2212;</button>
+            <button class="zoom-btn" id="zoom-in">+</button>
+          </div>
+          <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
+        </div>
+        <div class="pdf-scroll-area" id="pdf-scroll-area">
+          <div id="pdf-pages"></div>
+          <p class="pdf-loading" id="pdf-loading">Loading score…</p>
+        </div>
+      </div>
+
+      <div class="piece-info">
+        <p class="piece-back"><a href="../../arrangement.html#small-ensemble">← Works</a></p>
+
+        <div class="piece-header">
+          <h1 class="piece-title">Moldau <span class="piece-year">(2025)</span></h1>
+          <p class="piece-instr">For Chamber (7 players) Ensemble</p>
+          <p class="piece-composer">Arranger — Julian Kwoun</p>
+        </div>
+
+        <div class="piece-desc">
+          <p>설명</p>
+        </div>
+
+        <div class="piece-video">
+          <iframe
+            src="https://www.youtube.com/embed/L9MHY_dc86U"
+            title="Moldau — Julian Kwoun"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="piece-purchase">
+          <button class="purchase-btn" id="request-pdf-btn" onclick="location.href='../../request-pdf.html'">Request Score &amp; Parts (pdf)</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Hae In Kwoun</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="../../lang.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let pdfDoc = null;
+    let zoomLevel = 1.0;
+
+    function applyZoom() {
+      const container = document.getElementById('pdf-scroll-area');
+      const pages = document.getElementById('pdf-pages');
+      const containerWidth = container.clientWidth;
+      const targetWidth = Math.round(containerWidth * zoomLevel);
+      pages.style.width = targetWidth + 'px';
+      if (targetWidth > containerWidth) {
+        pages.style.marginLeft = '0';
+        requestAnimationFrame(() => { container.scrollLeft = (targetWidth - containerWidth) / 2; });
+      } else {
+        pages.style.marginLeft = ((containerWidth - targetWidth) / 2) + 'px';
+        container.scrollLeft = 0;
+      }
+    }
+
+    async function renderPages() {
+      const pages = document.getElementById('pdf-pages');
+      pages.innerHTML = '';
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page     = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: 1.8 });
+        const canvas   = document.createElement('canvas');
+        canvas.width   = viewport.width;
+        canvas.height  = viewport.height;
+        canvas.style.cssText = 'width:100%;display:block;margin-bottom:6px;';
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        pages.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      }
+    }
+
+    (async function () {
+      const url = '../../Scores/Arrangement/Small%20Ensemble%20(2~8%20performers)/Smetana%20Moldau.pdf';
+      const loading = document.getElementById('pdf-loading');
+      try {
+        pdfDoc = await pdfjsLib.getDocument(url).promise;
+        loading.style.display = 'none';
+        await renderPages();
+      } catch (err) {
+        loading.textContent = 'Score unavailable.';
+        console.error(err);
+      }
+    })();
+
+    const fsBtn = document.getElementById('fullscreen-btn');
+    const fsContainer = document.getElementById('pdf-container');
+
+    fsBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        fsContainer.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        zoomLevel = 1.0;
+        const pages = document.getElementById('pdf-pages');
+        pages.style.width = '';
+        pages.style.marginLeft = '';
+      }
+      fsBtn.textContent = document.fullscreenElement ? 'Exit' : 'Fullscreen';
+    });
+
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      zoomLevel = Math.min(zoomLevel + 0.2, 3.0);
+      applyZoom();
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      zoomLevel = Math.max(zoomLevel - 0.2, 0.4);
+      applyZoom();
+    });
+
+    document.getElementById('pdf-scroll-area').addEventListener('wheel', (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        zoomLevel = e.deltaY < 0
+          ? Math.min(zoomLevel + 0.1, 3.0)
+          : Math.max(zoomLevel - 0.1, 0.4);
+        applyZoom();
+      }
+    }, { passive: false });
+  </script>
+</body>
+</html>
