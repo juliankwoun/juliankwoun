@@ -101,7 +101,7 @@
         </div>
 
         <div class="piece-purchase">
-          <button class="purchase-btn">Purchase / 구매</button>
+          <button class="purchase-btn" id="request-pdf-btn">Request Score &amp; Parts (pdf)</button>
         </div>
       </div>
 
@@ -206,6 +206,15 @@
         applyZoom();
       }
     }, { passive: false });
+  </script>
+  <script>
+    document.getElementById('request-pdf-btn').addEventListener('click', () => {
+      const titleEl = document.querySelector('.piece-title').cloneNode(true);
+      const yearSpan = titleEl.querySelector('.piece-year');
+      if (yearSpan) yearSpan.remove();
+      const title = titleEl.textContent.trim();
+      window.location.href = '../../request-pdf.html?title=' + encodeURIComponent(title);
+    });
   </script>
 </body>
 </html>
