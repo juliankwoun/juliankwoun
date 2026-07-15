@@ -72,42 +72,60 @@
 
       <form class="request-form" id="request-form" novalidate>
         <div class="field">
-          <label class="field-label" for="req-name">의뢰자 성명 (Requester Name) <span class="field-required">*</span></label>
+          <label class="field-label" for="req-name"><span data-i18n="request-label-name">의뢰자 성명</span> <span class="field-required">*</span></label>
           <input type="text" id="req-name" name="name" required>
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-email">의뢰자 이메일 (Requester Email)</label>
+          <label class="field-label" for="req-email"><span data-i18n="request-label-email">의뢰자 이메일</span></label>
           <input type="email" id="req-email" name="email">
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-title">곡 제목 (Piece Title)</label>
+          <label class="field-label"><span data-i18n="request-label-category">의뢰 종류</span> <span class="field-required">*</span></label>
+          <div class="category-group" role="radiogroup">
+            <label class="category-option">
+              <input type="radio" name="category" value="composition" required>
+              <span data-i18n="request-category-composition">작곡</span>
+            </label>
+            <label class="category-option">
+              <input type="radio" name="category" value="arrangement" required>
+              <span data-i18n="request-category-arrangement">편곡</span>
+            </label>
+            <label class="category-option">
+              <input type="radio" name="category" value="transcription" required>
+              <span data-i18n="request-category-transcription">컴퓨터 사보</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-title"><span data-i18n="request-label-title">곡 제목</span></label>
           <input type="text" id="req-title" name="title">
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-instrumentation">악기 편성 (Instrumentation) <span class="field-required">*</span></label>
-          <input type="text" id="req-instrumentation" name="instrumentation" required>
+          <label class="field-label" for="req-instrumentation"><span data-i18n="request-label-instrumentation">악기 편성</span> <span class="field-required">*</span></label>
+          <input type="text" id="req-instrumentation" name="instrumentation" placeholder="e.g. Violin, Cello & Piano" required>
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-length">곡 길이 (Length)</label>
+          <label class="field-label" for="req-length"><span data-i18n="request-label-length">곡 길이</span></label>
           <input type="text" id="req-length" name="length" placeholder="e.g. 5 minutes">
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-purpose">의뢰 목적 (Request Purpose)</label>
+          <label class="field-label" for="req-purpose"><span data-i18n="request-label-purpose">의뢰 목적</span></label>
           <textarea id="req-purpose" name="purpose"></textarea>
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-due">마감 날짜 (Due Date) <span class="field-required">*</span></label>
+          <label class="field-label" for="req-due"><span data-i18n="request-label-due">마감 날짜</span> <span class="field-required">*</span></label>
           <input type="date" id="req-due" name="due" required>
         </div>
 
         <div class="field">
-          <label class="field-label" for="req-additional">추가 사항 (Additional Request)</label>
+          <label class="field-label" for="req-additional"><span data-i18n="request-label-additional">추가 사항</span></label>
           <textarea id="req-additional" name="additional" maxlength="250"></textarea>
           <span class="field-count"><span id="req-additional-count">0</span> / 250</span>
         </div>
@@ -144,9 +162,17 @@
         additionalCount.textContent = additional.value.length;
       });
 
+      const categoryLabels = {
+        composition:   '작곡 (Composition)',
+        arrangement:   '편곡 (Arrangement)',
+        transcription: '컴퓨터 사보 (Transcription)',
+      };
+
       function buildMessage() {
         const name = document.getElementById('req-name').value.trim();
         const email = document.getElementById('req-email').value.trim();
+        const categoryInput = document.querySelector('input[name="category"]:checked');
+        const category = categoryInput ? categoryLabels[categoryInput.value] : '-';
         const title = document.getElementById('req-title').value.trim();
         const instrumentation = document.getElementById('req-instrumentation').value.trim();
         const length = document.getElementById('req-length').value.trim();
@@ -158,6 +184,7 @@
         const body = [
           `의뢰자 성명 (Requester Name): ${name}`,
           `의뢰자 이메일 (Requester Email): ${email || '-'}`,
+          `의뢰 종류 (Request Type): ${category}`,
           `곡 제목 (Piece Title): ${title || '-'}`,
           `악기 편성 (Instrumentation): ${instrumentation}`,
           `곡 길이 (Length): ${length || '-'}`,

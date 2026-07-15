@@ -866,13 +866,47 @@ footer {
   letter-spacing: 0.03em;
 }
 
+.category-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+.category-option { cursor: pointer; }
+
+.category-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.category-option span {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  border: 1px solid var(--light);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--gray);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.category-option:has(input:checked) span {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.category-option:focus-within span { border-color: var(--black); }
+
 .request-note {
   margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  padding: 1.3rem 1.5rem;
   border-top: 1px solid var(--light);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--gray);
+  border-bottom: 1px solid var(--light);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--black);
   text-align: center;
 }
 
