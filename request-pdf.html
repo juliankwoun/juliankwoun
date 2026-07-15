@@ -93,6 +93,8 @@
         </div>
       </form>
 
+      <p class="request-note" data-i18n="request-price-note">자세한 가격은 상담 후 결정됩니다.</p>
+
       <div class="request-actions">
         <button type="button" class="request-btn" id="rp-gmail-btn" data-i18n="request-btn-gmail">Gmail로 보내기</button>
         <button type="button" class="request-btn" id="rp-naver-btn" data-i18n="request-btn-naver">네이버로 보내기</button>
@@ -158,9 +160,18 @@
 
         window.open(url, '_blank');
 
-        status.textContent = kind === 'gmail'
-          ? '메일 작성 창이 열렸습니다. 내용을 확인하고 전송해주세요. / A compose window has opened — please review and send.'
-          : '메일 작성 창이 열렸습니다. 본문이 비어있다면 붙여넣기(Cmd/Ctrl+V) 해주세요. / A compose window has opened — paste (Cmd/Ctrl+V) if the body is empty.';
+        const lang = localStorage.getItem('lang') || 'ko';
+        const statusMessages = {
+          gmail: {
+            ko: '메일 작성 창이 열렸습니다. 내용을 확인하고 전송해주세요.',
+            en: 'A compose window has opened — please review and send.',
+          },
+          naver: {
+            ko: '메일 작성 창이 열렸습니다. 본문이 비어있다면 붙여넣기(Cmd/Ctrl+V) 해주세요.',
+            en: 'A compose window has opened — paste (Cmd/Ctrl+V) if the body is empty.',
+          },
+        };
+        status.textContent = statusMessages[kind][lang];
       }
 
       document.getElementById('rp-gmail-btn').addEventListener('click', () => sendVia('gmail'));

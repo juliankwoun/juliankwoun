@@ -211,9 +211,18 @@
 
         window.open(url, '_blank');
 
-        status.textContent = kind === 'gmail'
-          ? '메일 작성 창이 열렸습니다. 내용을 확인하고 전송해주세요. / A compose window has opened — please review and send.'
-          : '메일 작성 창이 열렸습니다. 본문이 비어있다면 붙여넣기(Cmd/Ctrl+V) 해주세요. / A compose window has opened — paste (Cmd/Ctrl+V) if the body is empty.';
+        const lang = localStorage.getItem('lang') || 'ko';
+        const statusMessages = {
+          gmail: {
+            ko: '메일 작성 창이 열렸습니다. 내용을 확인하고 전송해주세요.',
+            en: 'A compose window has opened — please review and send.',
+          },
+          naver: {
+            ko: '메일 작성 창이 열렸습니다. 본문이 비어있다면 붙여넣기(Cmd/Ctrl+V) 해주세요.',
+            en: 'A compose window has opened — paste (Cmd/Ctrl+V) if the body is empty.',
+          },
+        };
+        status.textContent = statusMessages[kind][lang];
       }
 
       document.getElementById('req-gmail-btn').addEventListener('click', () => sendVia('gmail'));
