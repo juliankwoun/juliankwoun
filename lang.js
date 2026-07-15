@@ -24,6 +24,7 @@ const T = {
     'score-meta-4':    '2023 · 플루트 솔로',
     'score-note-label':'안내',
     'score-note-text': '악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>로 문의해주세요.',
+    'work-badge':      '악보 준비중',
 
     'contact-heading':        '연락<br><em>언제든지 환영합니다</em>',
     'contact-location-label': '위치',
@@ -54,6 +55,7 @@ const T = {
     'score-meta-4':    '2023 · Flute Solo',
     'score-note-label':'Note',
     'score-note-text': 'If you need a score file or audio recording, please reach out via <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>.',
+    'work-badge':      'Score Coming Soon',
 
     'contact-heading':        'Get in Touch —<br><em>always welcome</em>',
     'contact-location-label': 'Location',

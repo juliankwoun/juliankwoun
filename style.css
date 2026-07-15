@@ -740,6 +740,15 @@ footer {
   flex-shrink: 0;
 }
 
+.work-badge {
+  font-size: 0.6rem;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  opacity: 0.65;
+}
+
 /* ── PHOTO CREDIT ── */
 .photo-credit {
   font-size: 0.6rem;
