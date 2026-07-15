@@ -47,6 +47,13 @@ const T = {
     'request-btn-gmail':      'Gmail로 보내기',
     'request-btn-naver':      '네이버로 보내기',
 
+    'request-pdf-eyebrow':        'PDF 요청',
+    'request-pdf-heading':        '악보 자료<br><em>요청하기</em>',
+    'request-pdf-label-name':       '의뢰자 이름',
+    'request-pdf-label-email':      '의뢰자 이메일',
+    'request-pdf-label-title':      '곡 이름',
+    'request-pdf-label-additional': '문의 사항',
+
     'contact-heading':        '연락<br><em>언제든지 환영합니다</em>',
     'contact-location-label': '위치',
     'contact-location':       '대한민국',
@@ -98,6 +105,13 @@ const T = {
     'request-price-note':     'Task price will be decided after consultation.',
     'request-btn-gmail':      'Send via Gmail',
     'request-btn-naver':      'Send via Naver',
+
+    'request-pdf-eyebrow':        'PDF Request',
+    'request-pdf-heading':        'Score &amp; Parts<br><em>Request</em>',
+    'request-pdf-label-name':       'Requester Name',
+    'request-pdf-label-email':      'Requester Email',
+    'request-pdf-label-title':      'Piece Title',
+    'request-pdf-label-additional': 'Additional Request',
 
     'contact-heading':        'Get in Touch —<br><em>always welcome</em>',
     'contact-location-label': 'Location',
