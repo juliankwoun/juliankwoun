@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request — Julian Kwoun</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Home</a>
+    <ul class="nav-links">
+      <li><a href="bio.html" data-i18n="nav-bio">Bio</a></li>
+      <li class="nav-dropdown">
+        <a href="works.html" data-i18n="nav-works">Works</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-col">
+            <p class="dropdown-heading">Composition</p>
+            <ul>
+              <li><a href="score.html#orchestra">Orchestra</a></li>
+              <li><a href="score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="score.html#jazz-band">Jazz Band</a></li>
+              <li><a href="score.html#jazz-ensemble">Jazz Ensemble</a></li>
+              <li>
+                <a href="score.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="score.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="score.html#vocal">Vocal Music</a></li>
+              <li><a href="score.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <p class="dropdown-heading">Arrangement</p>
+            <ul>
+              <li><a href="arrangement.html#orchestra">Orchestra</a></li>
+              <li><a href="arrangement.html#wind-ensemble">Wind Ensemble</a></li>
+              <li>
+                <a href="arrangement.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="arrangement.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="arrangement.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="request.html" class="active" data-i18n="nav-request">Request</a></li>
+      <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="inner request-inner">
+      <p class="inner-eyebrow" data-i18n="request-eyebrow">의뢰</p>
+      <h1 class="inner-title" data-i18n="request-heading">의뢰서<br><em>작성하기</em></h1>
+
+      <p class="request-required-note" data-i18n="request-required-note">* 표시는 필수 입력 항목입니다.</p>
+
+      <form class="request-form" id="request-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="req-name">의뢰자 성명 (Requester Name) <span class="field-required">*</span></label>
+          <input type="text" id="req-name" name="name" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-email">의뢰자 이메일 (Requester Email)</label>
+          <input type="email" id="req-email" name="email">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-title">곡 제목 (Piece Title)</label>
+          <input type="text" id="req-title" name="title">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-instrumentation">악기 편성 (Instrumentation) <span class="field-required">*</span></label>
+          <input type="text" id="req-instrumentation" name="instrumentation" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-length">곡 길이 (Length)</label>
+          <input type="text" id="req-length" name="length" placeholder="e.g. 5 minutes">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-purpose">의뢰 목적 (Request Purpose)</label>
+          <textarea id="req-purpose" name="purpose"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-due">마감 날짜 (Due Date) <span class="field-required">*</span></label>
+          <input type="date" id="req-due" name="due" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="req-additional">추가 사항 (Additional Request)</label>
+          <textarea id="req-additional" name="additional" maxlength="250"></textarea>
+          <span class="field-count"><span id="req-additional-count">0</span> / 250</span>
+        </div>
+      </form>
+
+      <p class="request-note" data-i18n="request-price-note">자세한 가격은 상담 후 결정됩니다.</p>
+
+      <div class="request-actions">
+        <button type="button" class="request-btn" id="req-gmail-btn" data-i18n="request-btn-gmail">Gmail로 보내기</button>
+        <button type="button" class="request-btn" id="req-naver-btn" data-i18n="request-btn-naver">네이버로 보내기</button>
+      </div>
+
+      <p class="request-status" id="request-status"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Hae In Kwoun</p>
+  </footer>
+
+  <script src="lang.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('request-form');
+      const additional = document.getElementById('req-additional');
+      const additionalCount = document.getElementById('req-additional-count');
+      const status = document.getElementById('request-status');
+      const recipient = 'juliankwoun@gmail.com';
+
+      form.addEventListener('submit', e => e.preventDefault());
+
+      additional.addEventListener('input', () => {
+        additionalCount.textContent = additional.value.length;
+      });
+
+      function buildMessage() {
+        const name = document.getElementById('req-name').value.trim();
+        const email = document.getElementById('req-email').value.trim();
+        const title = document.getElementById('req-title').value.trim();
+        const instrumentation = document.getElementById('req-instrumentation').value.trim();
+        const length = document.getElementById('req-length').value.trim();
+        const purpose = document.getElementById('req-purpose').value.trim();
+        const due = document.getElementById('req-due').value;
+        const extra = additional.value.trim();
+
+        const subject = `의뢰 문의 (Commission Request) - ${name}`;
+        const body = [
+          `의뢰자 성명 (Requester Name): ${name}`,
+          `의뢰자 이메일 (Requester Email): ${email || '-'}`,
+          `곡 제목 (Piece Title): ${title || '-'}`,
+          `악기 편성 (Instrumentation): ${instrumentation}`,
+          `곡 길이 (Length): ${length || '-'}`,
+          `의뢰 목적 (Request Purpose): ${purpose || '-'}`,
+          `마감 날짜 (Due Date): ${due}`,
+          `추가 사항 (Additional Request): ${extra || '-'}`,
+        ].join('\n');
+
+        return { subject, body };
+      }
+
+      function sendVia(kind) {
+        if (!form.reportValidity()) return;
+
+        const { subject, body } = buildMessage();
+
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(body).catch(() => {});
+        }
+
+        const url = kind === 'gmail'
+          ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+          : `https://mail.naver.com/write/popup/?to=${encodeURIComponent(recipient)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.open(url, '_blank');
+
+        status.textContent = kind === 'gmail'
+          ? '메일 작성 창이 열렸습니다. 내용을 확인하고 전송해주세요. / A compose window has opened — please review and send.'
+          : '메일 작성 창이 열렸습니다. 본문이 비어있다면 붙여넣기(Cmd/Ctrl+V) 해주세요. / A compose window has opened — paste (Cmd/Ctrl+V) if the body is empty.';
+      }
+
+      document.getElementById('req-gmail-btn').addEventListener('click', () => sendVia('gmail'));
+      document.getElementById('req-naver-btn').addEventListener('click', () => sendVia('naver'));
+    })();
+  </script>
+</body>
+</html>

@@ -4,10 +4,12 @@ const T = {
     'hero-desc':       '소리와 침묵 사이에서 작업합니다.<br>아래에서 더 알아보세요.',
     'card-01-desc':    '저를 소개합니다. 음악을 시작하게 된 이야기와 지금까지의 여정.',
     'card-02-desc':    '작곡한 곡들과 악보를 모아두었습니다.',
-    'card-03-desc':    '협업 문의, 연주 의뢰 또는 그냥 인사도 환영합니다.',
+    'card-03-desc':    '작곡 또는 편곡 의뢰서를 작성해주세요.',
+    'card-04-desc':    '협업 문의, 연주 의뢰 또는 그냥 인사도 환영합니다.',
 
     'nav-bio':     '프로필',
     'nav-works':   '작품',
+    'nav-request': '의뢰',
     'nav-contact': '연락처',
 
     'bio-eyebrow':    '프로필',
@@ -26,6 +28,13 @@ const T = {
     'score-note-text': '악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>로 문의해주세요.',
     'work-badge':      '악보 준비중',
 
+    'request-eyebrow':        '의뢰',
+    'request-heading':        '의뢰서<br><em>작성하기</em>',
+    'request-required-note':  '* 표시는 필수 입력 항목입니다.',
+    'request-price-note':     '자세한 가격은 상담 후 결정됩니다.',
+    'request-btn-gmail':      'Gmail로 보내기',
+    'request-btn-naver':      '네이버로 보내기',
+
     'contact-heading':        '연락<br><em>언제든지 환영합니다</em>',
     'contact-location-label': '위치',
     'contact-location':       '대한민국',
@@ -35,10 +44,12 @@ const T = {
     'hero-desc':       'Working between sound and silence.<br>Learn more below.',
     'card-01-desc':    'An introduction to who I am — the story of how I began in music and the journey so far.',
     'card-02-desc':    'A collection of compositions and scores.',
-    'card-03-desc':    'Open to collaboration, performance commissions, or just a friendly hello.',
+    'card-03-desc':    'Submit a request for a new composition or arrangement.',
+    'card-04-desc':    'Open to collaboration, performance commissions, or just a friendly hello.',
 
     'nav-bio':     'Bio',
     'nav-works':   'Works',
+    'nav-request': 'Request',
     'nav-contact': 'Contact',
 
     'bio-eyebrow':    'Biography',
@@ -56,6 +67,13 @@ const T = {
     'score-note-label':'Note',
     'score-note-text': 'If you need a score file or audio recording, please reach out via <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>.',
     'work-badge':      'Score Coming Soon',
+
+    'request-eyebrow':        'Request',
+    'request-heading':        'Commission<br><em>Request</em>',
+    'request-required-note':  '* indicates a required field.',
+    'request-price-note':     'Task price will be decided after consultation.',
+    'request-btn-gmail':      'Send via Gmail',
+    'request-btn-naver':      'Send via Naver',
 
     'contact-heading':        'Get in Touch —<br><em>always welcome</em>',
     'contact-location-label': 'Location',
