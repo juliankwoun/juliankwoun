@@ -335,6 +335,7 @@ nav {
 }
 
 .dropdown-heading {
+  display: block;
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -343,7 +344,11 @@ nav {
   margin-bottom: 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--light);
+  text-decoration: none;
+  transition: color 0.2s;
 }
+
+.dropdown-heading:hover { color: var(--gray); }
 
 .dropdown-col {
   min-width: 150px;
