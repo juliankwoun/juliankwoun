@@ -163,16 +163,17 @@
       });
 
       const categoryLabels = {
-        composition:   '작곡 (Composition)',
-        arrangement:   '편곡 (Arrangement)',
-        transcription: '컴퓨터 사보 (Transcription)',
+        composition:   { ko: '작곡', en: 'Composition' },
+        arrangement:   { ko: '편곡', en: 'Arrangement' },
+        transcription: { ko: '컴퓨터 사보', en: 'Transcription' },
       };
 
       function buildMessage() {
+        const lang = localStorage.getItem('lang') || 'ko';
         const name = document.getElementById('req-name').value.trim();
         const email = document.getElementById('req-email').value.trim();
         const categoryInput = document.querySelector('input[name="category"]:checked');
-        const category = categoryInput ? categoryLabels[categoryInput.value] : '-';
+        const category = categoryInput ? categoryLabels[categoryInput.value][lang] : '-';
         const title = document.getElementById('req-title').value.trim();
         const instrumentation = document.getElementById('req-instrumentation').value.trim();
         const length = document.getElementById('req-length').value.trim();
@@ -180,18 +181,20 @@
         const due = document.getElementById('req-due').value;
         const extra = additional.value.trim();
 
-        const subject = `의뢰 문의 (Commission Request) - ${name}`;
-        const body = [
-          `의뢰자 성명 (Requester Name): ${name}`,
-          `의뢰자 이메일 (Requester Email): ${email || '-'}`,
-          `의뢰 종류 (Request Type): ${category}`,
-          `곡 제목 (Piece Title): ${title || '-'}`,
-          `악기 편성 (Instrumentation): ${instrumentation}`,
-          `곡 길이 (Length): ${length || '-'}`,
-          `의뢰 목적 (Request Purpose): ${purpose || '-'}`,
-          `마감 날짜 (Due Date): ${due}`,
-          `추가 사항 (Additional Request): ${extra || '-'}`,
-        ].join('\n');
+        const subjects = {
+          ko: `의뢰 문의 - ${name}`,
+          en: `Commission Request - ${name}`,
+        };
+        const fieldLabels = {
+          ko: ['의뢰자 성명', '의뢰자 이메일', '의뢰 종류', '곡 제목', '악기 편성', '곡 길이', '의뢰 목적', '마감 날짜', '추가 사항'],
+          en: ['Requester Name', 'Requester Email', 'Request Type', 'Piece Title', 'Instrumentation', 'Length', 'Request Purpose', 'Due Date', 'Additional Request'],
+        };
+        const values = [name, email || '-', category, title || '-', instrumentation, length || '-', purpose || '-', due, extra || '-'];
+
+        const subject = subjects[lang];
+        const body = fieldLabels[lang]
+          .map((label, i) => `${label}: ${values[i]}`)
+          .join('\n');
 
         return { subject, body };
       }

@@ -129,18 +129,26 @@
       });
 
       function buildMessage() {
+        const lang = localStorage.getItem('lang') || 'ko';
         const name = document.getElementById('rp-name').value.trim();
         const email = document.getElementById('rp-email').value.trim();
         const title = titleInput.value.trim();
         const extra = additional.value.trim();
 
-        const subject = `악보 자료 요청 (Score & Parts Request) - ${name}`;
-        const body = [
-          `의뢰자 이름 (Requester Name): ${name}`,
-          `의뢰자 이메일 (Requester Email): ${email || '-'}`,
-          `곡 이름 (Piece Title): ${title || '-'}`,
-          `문의 사항 (Additional Request): ${extra || '-'}`,
-        ].join('\n');
+        const subjects = {
+          ko: `악보 자료 요청 - ${name}`,
+          en: `Score & Parts Request - ${name}`,
+        };
+        const fieldLabels = {
+          ko: ['의뢰자 이름', '의뢰자 이메일', '곡 이름', '문의 사항'],
+          en: ['Requester Name', 'Requester Email', 'Piece Title', 'Additional Request'],
+        };
+        const values = [name, email || '-', title || '-', extra || '-'];
+
+        const subject = subjects[lang];
+        const body = fieldLabels[lang]
+          .map((label, i) => `${label}: ${values[i]}`)
+          .join('\n');
 
         return { subject, body };
       }
