@@ -1,6 +1,6 @@
 const T = {
   ko: {
-    'hero-title':      '창작의 행복<br><em>일하는 음악가</em>',
+    'hero-title':      '현신의 창작활동<br><em>일하는 음악가</em>',
     'hero-desc':       '예술의 발전과 지속성을 위해 작업에 몰두합니다.<br>아래에서 더 알아보세요.',
     'card-01-desc':    '저를 소개합니다. 음악을 시작하게 된 이야기와 지금까지의 여정.',
     'card-02-desc':    '작곡한 곡들과 악보를 모아두었습니다.',
@@ -60,7 +60,7 @@ const T = {
     'contact-location':       '대한민국',
   },
   en: {
-    'hero-title':      'To be in service<br><em>working musicians</em>',
+    'hero-title':      'To be in service<br><em>working musician</em>',
     'hero-desc':       'For the consistency and development of the arts.<br>Learn more below.',
     'card-01-desc':    'An introduction to who I am — the story of how I began in music and the journey so far.',
     'card-02-desc':    'A collection of compositions and scores.',
