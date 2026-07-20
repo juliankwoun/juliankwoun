@@ -64,7 +64,7 @@ const T = {
     'hero-title':      'To be in service<br><em>working musician</em>',
     'hero-desc':       'For the consistency and development of the arts.<br>Learn more below.',
     'card-01-desc':    'An introduction to who I am — the story of how I began in music and the journey so far.',
-    'card-02-desc':    'A collection of compositions and scores.',
+    'card-02-desc':    'A collection of comp./arr. scores and more.',
     'card-03-desc':    'Submit a request for a new composition or arrangement.',
     'card-04-desc':    'Open to collaboration, performance commissions, or just a friendly hello.',
 
