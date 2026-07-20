@@ -1,12 +1,13 @@
 const T = {
   ko: {
-    'hero-title':      '현신의 창작활동<br><em>일하는 음악가</em>',
+    'hero-title':      '헌신의 창작활동<br><em>일하는 음악가</em>',
     'hero-desc':       '예술의 발전과 지속성을 위해 작업에 몰두합니다.<br>아래에서 더 알아보세요.',
     'card-01-desc':    '저를 소개합니다. 음악을 시작하게 된 이야기와 지금까지의 여정.',
     'card-02-desc':    '작곡한 곡들과 악보를 모아두었습니다.',
     'card-03-desc':    '작곡 또는 편곡 의뢰서를 작성해주세요.',
     'card-04-desc':    '협업 문의, 연주 의뢰 또는 그냥 인사도 환영합니다.',
 
+    'nav-home':    '홈',
     'nav-bio':     '프로필',
     'nav-works':   '작품',
     'nav-request': '의뢰',
@@ -67,6 +68,7 @@ const T = {
     'card-03-desc':    'Submit a request for a new composition or arrangement.',
     'card-04-desc':    'Open to collaboration, performance commissions, or just a friendly hello.',
 
+    'nav-home':    'Home',
     'nav-bio':     'Bio',
     'nav-works':   'Works',
     'nav-request': 'Request',
