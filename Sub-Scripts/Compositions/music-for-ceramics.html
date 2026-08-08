@@ -90,10 +90,31 @@
         </div>
 
         <div class="piece-desc">
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <img src="../../Pictures/Revered%20Yearning%20(Anthony%20Park%20Kascak)_page-0001.jpg" alt="Revered Yearning (Anthony Park Kascak)" style="width:50%; height:auto; display:block;">
-            <img src="../../Pictures/Dream%20Whip%202%20(Aaron%20Noble%20Eskridge).png" alt="Dream Whip 2 (Aaron Noble Eskridge)" style="width:50%; height:auto; display:block;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <figure style="margin:0; width:50%;">
+              <img src="../../Pictures/Revered%20Yearning%20(Anthony%20Park%20Kascak)_page-0001.jpg"
+                   alt="Revered Yearning (Anthony Park Kascak)"
+                   class="artwork-thumb"
+                   style="width:100%; height:auto; display:block; cursor:zoom-in;">
+              <figcaption style="margin-top:6px; text-align:center; font-size:0.85em; line-height:1.4;">
+                <em>Revered Yearning</em><br>Anthony Park Kascak
+              </figcaption>
+            </figure>
+            <figure style="margin:0; width:50%;">
+              <img src="../../Pictures/Dream%20Whip%202%20(Aaron%20Noble%20Eskridge).png"
+                   alt="Dream Whip 2 (Aaron Noble Eskridge)"
+                   class="artwork-thumb"
+                   style="width:100%; height:auto; display:block; cursor:zoom-in;">
+              <figcaption style="margin-top:6px; text-align:center; font-size:0.85em; line-height:1.4;">
+                <em>Dream Whip 2</em><br>Aaron Noble Eskridge
+              </figcaption>
+            </figure>
           </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;" onclick="this.style.display='none';">
+          <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; box-shadow:0 4px 32px rgba(0,0,0,0.6);">
         </div>
 
         <div class="piece-purchase">
@@ -202,6 +223,20 @@
         applyZoom();
       }
     }, { passive: false });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.artwork-thumb').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.style.display = 'flex';
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.style.display = 'none';
+    });
   </script>
 </body>
 </html>
