@@ -30,7 +30,7 @@ const T = {
     'work-badge':      '악보 준비중',
     'piece-instrumentation-label': '악기 편성: ',
     'piece-no-request': '이 작품은 자료 요청을 받지 않습니다.',
-    'piece-purchase-note': '이 작품은 악보 구매가 가능합니다.',
+    'piece-purchase-note': '이 작품은 외부에서 구매할 수 있습니다.',
 
     'request-eyebrow':        '의뢰',
     'request-heading':        '의뢰서<br><em>작성하기</em>',
