@@ -88,6 +88,15 @@
           <p class="piece-composer">Composer — Julian Kwoun</p>
         </div>
 
+        <div class="piece-video">
+          <iframe
+            src="https://www.youtube.com/embed/Ohh4WCT_HfQ"
+            title="세도막 — Julian Kwoun"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
         <div class="piece-purchase">
           <button class="purchase-btn" id="request-pdf-btn">Request Score &amp; Parts (pdf)</button>
         </div>
@@ -142,7 +151,7 @@
     }
 
     (async function () {
-      const url = '../../Scores/Composition/Small%20Ensemble%20(2~8%20performers)/세도막.pdf';
+      const url = '../../Scores/Composition/Small%20Ensemble%20(2~8%20performers)/세도막%20(첫%20발표된%20작품).pdf';
       const loading = document.getElementById('pdf-loading');
       try {
         pdfDoc = await pdfjsLib.getDocument(url).promise;
