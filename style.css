@@ -723,6 +723,7 @@ footer {
 }
 
 .purchase-btn {
+  display: block;
   width: 100%;
   padding: 1rem;
   background: var(--black);
@@ -732,12 +733,24 @@ footer {
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s;
+  box-sizing: border-box;
 }
 
 .purchase-btn:hover { opacity: 0.75; }
+
+.piece-purchase-note {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gray);
+  margin-bottom: 0.7rem;
+}
 
 .piece-no-request {
   padding-top: 1.5rem;
