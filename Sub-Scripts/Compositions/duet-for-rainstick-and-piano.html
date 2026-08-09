@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duet for Rainstick &amp; Piano, Op. 18 — Julian Kwoun</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+  <nav>
+    <a href="../../index.html" class="nav-logo" data-i18n="nav-home">Home</a>
+    <ul class="nav-links">
+      <li><a href="../../bio.html" data-i18n="nav-bio">Bio</a></li>
+      <li class="nav-dropdown">
+        <a href="../../works.html" class="active" data-i18n="nav-works">Works</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-col">
+            <a class="dropdown-heading" href="../../score.html">Composition</a>
+            <ul>
+              <li><a href="../../score.html#orchestra">Orchestra</a></li>
+              <li><a href="../../score.html#wind-ensemble">Wind Ensemble</a></li>
+              <li><a href="../../score.html#jazz-band">Jazz Band</a></li>
+              <li>
+                <a href="../../score.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="../../score.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="../../score.html#electroacoustic">Electroacoustic</a></li>
+              <li><a href="../../score.html#vocal">Vocal Music</a></li>
+              <li><a href="../../score.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-col">
+            <a class="dropdown-heading" href="../../arrangement.html">Arrangement</a>
+            <ul>
+              <li><a href="../../arrangement.html#orchestra">Orchestra</a></li>
+              <li><a href="../../arrangement.html#wind-ensemble">Wind Ensemble</a></li>
+              <li>
+                <a href="../../arrangement.html#large-ensemble">Large Ensemble</a>
+                <span class="dropdown-sub">(9 ~ 20 performers)</span>
+              </li>
+              <li>
+                <a href="../../arrangement.html#small-ensemble">Small Ensemble</a>
+                <span class="dropdown-sub">(2 ~ 8 performers)</span>
+              </li>
+              <li><a href="../../arrangement.html#solo">Solo Instrument</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="../../request.html" data-i18n="nav-request">Request</a></li>
+      <li><a href="../../contact.html" data-i18n="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="piece-page">
+
+      <div class="piece-score" id="pdf-container">
+        <div class="pdf-scroll-area">
+          <p class="pdf-loading">Score unavailable.</p>
+        </div>
+      </div>
+
+      <div class="piece-info">
+        <p class="piece-back"><a href="../../score.html#electroacoustic">← Works</a></p>
+
+        <div class="piece-header">
+          <h1 class="piece-title">Duet for Rainstick &amp; Piano, Op. 18 <span class="piece-year">(2018)</span></h1>
+          <p class="piece-instr">Fixed Media</p>
+          <p class="piece-composer">Composer — Julian Kwoun</p>
+        </div>
+
+        <div class="piece-audio">
+          <audio id="audio-el" preload="metadata">
+            <source src="../../Scores/Composition/Electroacoustic/18%20Duet%20for%20Rainstick%20%26%20Piano.m4a" type="audio/mp4">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-player">
+            <button class="audio-play-btn" id="audio-play-btn" aria-label="Play">
+              <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+            </button>
+            <span class="audio-time" id="audio-current">0:00</span>
+            <input type="range" class="audio-seek" id="audio-seek" min="0" max="0" step="0.01" value="0">
+            <span class="audio-time" id="audio-duration">0:00</span>
+          </div>
+        </div>
+
+        <div class="piece-purchase">
+          <button class="purchase-btn" id="request-pdf-btn">Request Score &amp; Parts (pdf)</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Julian Hae Yoon Kwoun</p>
+    <p>Web Design — Randy Hae In Kwoun</p>
+  </footer>
+
+  <script src="../../lang.js"></script>
+  <script>
+    (function () {
+      const audio   = document.getElementById('audio-el');
+      const playBtn = document.getElementById('audio-play-btn');
+      const iconPlay  = playBtn.querySelector('.icon-play');
+      const iconPause = playBtn.querySelector('.icon-pause');
+      const seek    = document.getElementById('audio-seek');
+      const curEl   = document.getElementById('audio-current');
+      const durEl   = document.getElementById('audio-duration');
+
+      function formatTime(sec) {
+        if (!isFinite(sec) || sec < 0) return '0:00';
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + String(s).padStart(2, '0');
+      }
+
+      function paintSeek() {
+        const pct = seek.max > 0 ? (seek.value / seek.max) * 100 : 0;
+        seek.style.background = `linear-gradient(to right, var(--black) ${pct}%, var(--light) ${pct}%)`;
+      }
+
+      audio.addEventListener('loadedmetadata', () => {
+        seek.max = audio.duration;
+        durEl.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        seek.value = audio.currentTime;
+        curEl.textContent = formatTime(audio.currentTime);
+        paintSeek();
+      });
+
+      audio.addEventListener('ended', () => {
+        iconPlay.style.display = '';
+        iconPause.style.display = 'none';
+      });
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = 'none';
+          iconPause.style.display = '';
+        } else {
+          audio.pause();
+          iconPlay.style.display = '';
+          iconPause.style.display = 'none';
+        }
+      });
+
+      seek.addEventListener('input', () => {
+        audio.currentTime = seek.value;
+        curEl.textContent = formatTime(seek.value);
+        paintSeek();
+      });
+
+      paintSeek();
+    })();
+  </script>
+  <script>
+    document.getElementById('request-pdf-btn').addEventListener('click', () => {
+      const titleEl = document.querySelector('.piece-title').cloneNode(true);
+      const yearSpan = titleEl.querySelector('.piece-year');
+      if (yearSpan) yearSpan.remove();
+      const title = titleEl.textContent.trim();
+      window.location.href = '../../request-pdf.html?title=' + encodeURIComponent(title);
+    });
+  </script>
+</body>
+</html>
