@@ -29,6 +29,7 @@ const T = {
     'score-note-text': '악보 파일이나 음원이 필요하시면 <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>로 문의해주세요.',
     'work-badge':      '악보 준비중',
     'piece-instrumentation-label': '악기 편성: ',
+    'piece-no-request': '이 작품은 자료 요청을 받지 않습니다.',
 
     'request-eyebrow':        '의뢰',
     'request-heading':        '의뢰서<br><em>작성하기</em>',
@@ -90,6 +91,7 @@ const T = {
     'score-note-text': 'If you need a score file or audio recording, please reach out via <a href="contact.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Contact</a>.',
     'work-badge':      'Score Coming Soon',
     'piece-instrumentation-label': 'Instrumentation: ',
+    'piece-no-request': 'This piece is not available for request.',
 
     'request-eyebrow':        'Request',
     'request-heading':        'Commission<br><em>Request</em>',

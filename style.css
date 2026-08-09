@@ -739,6 +739,16 @@ footer {
 
 .purchase-btn:hover { opacity: 0.75; }
 
+.piece-no-request {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--light);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gray);
+}
+
 .work-link {
   text-decoration: none;
   color: inherit;

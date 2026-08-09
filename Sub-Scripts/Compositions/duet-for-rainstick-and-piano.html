@@ -96,9 +96,7 @@
           </div>
         </div>
 
-        <div class="piece-purchase">
-          <button class="purchase-btn" id="request-pdf-btn">Request Score &amp; Parts (pdf)</button>
-        </div>
+        <p class="piece-no-request" data-i18n="piece-no-request">This piece is not available for request.</p>
       </div>
 
     </div>
@@ -168,15 +166,6 @@
 
       paintSeek();
     })();
-  </script>
-  <script>
-    document.getElementById('request-pdf-btn').addEventListener('click', () => {
-      const titleEl = document.querySelector('.piece-title').cloneNode(true);
-      const yearSpan = titleEl.querySelector('.piece-year');
-      if (yearSpan) yearSpan.remove();
-      const title = titleEl.textContent.trim();
-      window.location.href = '../../request-pdf.html?title=' + encodeURIComponent(title);
-    });
   </script>
 </body>
 </html>
